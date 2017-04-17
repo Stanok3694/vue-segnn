@@ -1,0 +1,12 @@
+/* material section */
+.mat-shadow-base {
+    box-shadow: 0 7px 8px -4px rgba(0,0,0,.2),
+                0 12px 17px 2px rgba(0,0,0,.14),
+                0 5px 22px 4px rgba(0,0,0,.12)!important
+}
+
+.mat-shadow-active {
+    box-shadow: 0 10px 13px -6px rgba(0,0,0,.2),
+                0 20px 31px 3px rgba(0,0,0,.14),
+                0 8px 38px 7px rgba(0,0,0,.12)!important
+}

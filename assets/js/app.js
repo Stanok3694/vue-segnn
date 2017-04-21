@@ -38,16 +38,7 @@ new Vue({
     el: "#app",
     data() {
         return{
-            featureHeaders:{
-                firstHeader: 'Электромонтажные работы',
-                secondHeader: 'Энергоаудит',
-                thirdHeader: 'Специальные виды работ',
-
-                firstDefaultHeader: 'Качество',
-                secondDefaultHeader: 'Опыт',
-                thirdDefaultHeader: 'Гибкость',
-             },
-             
+            // description variables with default data  
             firstFeatureHeader: 'Качество',
             secondFeatureHeader: 'Опыт',
             thirdFeatureHeader: 'Гибкость',
@@ -64,12 +55,12 @@ new Vue({
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
-
+            // flags
             isThisFirstLaunch: true,
-
+            // classes data
             firstTypeOfFeature: 'col-md-7',
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
-
+            // data objects for content
             featureContents:{
                 firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 

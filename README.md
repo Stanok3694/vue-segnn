@@ -7,13 +7,6 @@ Also I would like to deploy this into cloud's env and use docker for this or tri
 This is my first freelance project on vue.js.
 ***
 
-19.04.17 -> think about using vue component's into this site. There are several ways:
-  - use webpack for this (maybe use this way after all other ways in futute redesign of project);
-  - use single-file way and defint components global or local with string-mode templates (hard way);
-  - use x-template scripts for define html-templates and use these templates in local or global components;
-Today I will try to use x-template way for templates and create some local/global components.
-***
-
 22.04.17 -> app is growning:
   - use components in single file (app.js), templates are inline javascript string; 
   - now think about gulp for more flexible developing; 
@@ -21,3 +14,12 @@ Today I will try to use x-template way for templates and create some local/globa
   - now use node.js/http-server module for getting static content instead of file system.
 Great experience with vue.js, js, css/bootstrap ans other related tech when I have worked with this project.
 ***
+
+19.04.17 -> think about using vue component's into this site. There are several ways:
+  - use webpack for this (maybe use this way after all other ways in futute redesign of project);
+  - use single-file way and defint components global or local with string-mode templates (hard way);
+  - use x-template scripts for define html-templates and use these templates in local or global components;
+Today I will try to use x-template way for templates and create some local/global components.
+***
+
+

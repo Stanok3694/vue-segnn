@@ -38,22 +38,38 @@ new Vue({
     el: "#app",
     data() {
         return{
-            firstFeatureHeader: 'NAN',
-            secondFeatureHeader: 'NAN',
-            thirdFeatureHeader: 'NAN',
+            featureHeaders:{
+                firstHeader: 'Электромонтажные работы',
+                secondHeader: 'Энергоаудит',
+                thirdHeader: 'Специальные виды работ',
 
-            firstFeatureContent: 'NaN',
-            secondFeatureContent: 'NaN',
-            thirdFeatureContent:'NaN',
+                firstDefaultHeader: 'Качество',
+                secondDefaultHeader: 'Опыт',
+                thirdDefaultHeader: 'Гибкость',
+             },
+             
+            firstFeatureHeader: 'Качество',
+            secondFeatureHeader: 'Опыт',
+            thirdFeatureHeader: 'Гибкость',
+
+            firstFeatureContent: 'Ключевой критерий для нас - качество выполняемых работ. ' 
+                         + 'Проводником нашего стремления к максимальному качеству стал комплекс '
+                         + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
+                         + 'с нашими клиентами. Мы знаем как сделать КАЧЕСТВЕННО',
+            secondFeatureContent: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
+                         + 'Пройденный нами путь способствовал достижению высокого уровня зрелости бизнес-процессов '
+                         + 'как внутри компании, так и во взаимодействии с клиентами. '
+                         + 'с нашими клиентами. Мы знаем КАК делать',
+            thirdFeatureContent: 'Благодаря стремлению к новым интересным задачам, ' 
+                         + 'наша компания накопила значительный багаж самых разных проектов. '
+                         + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
+                         + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
+
+            isThisFirstLaunch: true,
 
             firstTypeOfFeature: 'col-md-7',
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
 
-            featureHeaders:{
-                firstHeader: 'Качество',
-                secondHeader: 'Опыт',
-                thirdHeader: 'Гибкость',
-             },
             featureContents:{
                 firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 
@@ -66,11 +82,44 @@ new Vue({
                 thirdText: 'Lonec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 
                          + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                         + 'Fusce dapibus, tellus ac cursus commodo.'
+                         + 'Fusce dapibus, tellus ac cursus commodo.',
+                firstDefaultText: 'Ключевой критерий для нас - качество выполняемых работ. ' 
+                         + 'Проводником нашего стремления к максимальному качеству стал комплекс '
+                         + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
+                         + 'с нашими клиентами. Мы знаем как сделать КАЧЕСТВЕННО',
+                secondDefaultText: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
+                         + 'Пройденный нами путь способствовал достижению высокого уровня зрелости бизнес-процессов '
+                         + 'как внутри компании, так и во взаимодействии с клиентами. '
+                         + 'с нашими клиентами. Мы знаем КАК делать',
+                thirdDefaultText: 'Благодаря стремлению к новым интересным задачам, ' 
+                         + 'наша компания накопила значительный багаж самых разных проектов. '
+                         + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
+                         + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ'
             }
         }    
     },
     methods: {
+        resetContentAndHeaders: function(){
+            this.isThisFirstLaunch = true;
+            this.setDefaultFeaturesContents();
+            this.setDefaultFeaturesHeaders();
+        },
+
+        setDefaultFeaturesContents: function(){
+            if(this.isThisFirstLaunch){
+                this.firstFeatureContent = this.featureContents.firstDefaultText;
+                this.secondFeatureContent = this.featureContents.secondDefaultText;
+                this.thirdFeatureContent = this.featureContents.thirdDefaultText;
+            }
+        },
+        setDefaultFeaturesHeaders: function(){
+            if(this.isThisFirstLaunch){
+                this.firstFeatureHeader = this.featureHeaders.firstDefaultHeader;
+                this.secondFeatureHeader = this.featureHeaders.secondDefaultHeader;
+                this.thirdFeatureHeader = this.featureHeaders.thirdDefaultHeader;
+            }
+        },
+
         setFeatureContent: function(name){
             if(name == "feature-one"){
                 this.firstFeatureContent = this.featureContents.firstText;
@@ -105,15 +154,19 @@ new Vue({
                 this.thirdFeatureHeader = this.featureHeaders.thirdHeader;
             }
         },
+
         firstFeatureBlock: function() {
+            this.isThisFirstLaunch = false;
             this.setFeatureContent('feature-one');
             this.setFeatureHeader('feature-one');
         },
         secondFeatureBlock: function() {
+            this.isThisFirstLaunch = false;
             this.setFeatureContent('feature-two');
             this.setFeatureHeader('feature-two');
         },
         thirdFeatureBlock: function() {
+            this.isThisFirstLaunch = false;
             this.setFeatureContent('feature-three');
             this.setFeatureHeader('feature-three');
         }

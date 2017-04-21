@@ -17,73 +17,105 @@ Vue.component('my-footer', {
 })
 // feature-content-component
 Vue.component('feature-content', {
-    props: ['type'],
-    template: '<div :class="setFeatureContainerClass()"><h2 :class="setFeatureHeaderTwoClass()">{{featureTitle}}</h2><p :class="setParagraphClass()">{{featureContent}}</p></div>',
-    data: function(){
-        return {
-            featureTitle: this.setFeatureHeader(),
-            featureClasses: {
-                divClass: 'col-md-7',
-                headerTwoClass: 'featurette-heading',
-                paragraphClass: 'lead'
-            },
-            featureHeaders:{
-                firstHeader: 'Качество',
-                secondHeader: 'Опыт',
-                thirdHeader: 'Гибкость',
-            },
-            featureContent: this.setFeatureContent()            
-        }
+    props: {
+        header: {
+            type: String,
+            required: true
+        },
+        content: {
+            type: String,
+            required: true
+        },
+        feature: {
+            type: String,
+            required: true
+        },
     },
-    methods: {
-        setFeatureHeader: function(){
-            if(this.type == '1'){
-                return featureHeaders.firstHeader;
-            }
-            if(this.type == '2'){
-                return featureHeaders.secondHeader;
-            }
-            if(this.type == '3'){
-                return featureHeaders.thirdHeader;
-            }
-        },
-        setFeatureContent: function(){
-            if(this.type == '1'){
-                return 'Donec ullamcorper nulla non metus auctor fringilla.' 
-                     + 'Vestibulum id ligula porta felis euismod semper. ' 
-                     + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                     + 'Fusce dapibus, tellus ac cursus commodo.';
-            }
-            if(this.type == '2'){
-                return 'Bonec ullamcorper nulla non metus auctor fringilla.' 
-                     + 'Vestibulum id ligula porta felis euismod semper. ' 
-                     + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                     + 'Fusce dapibus, tellus ac cursus commodo.';
-            }
-            if(this.type == '3'){
-                return 'Lonec ullamcorper nulla non metus auctor fringilla.' 
-                     + 'Vestibulum id ligula porta felis euismod semper. ' 
-                     + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                     + 'Fusce dapibus, tellus ac cursus commodo.';
-            }
-            return 'Sorry, there is no data!'
-        },
-        setFeatureContainerClass: function(){
-            if(this.type == '1') return this.featureClasses.divClass
-            if(this.type == '2') return this.featureClasses.divClass + 'col-md-push-5'
-            if(this.type == '3') return this.featureClasses.divClass
-        },
-        setFeatureHeaderTwoClass: function(){
-            return this.featureClasses.headerTwoClass
-        },
-        setParagraphClass: function(){
-            return this.featureClasses.paragraphClass
-        }
-    }
+    template: '<div :class="feature"><h2 class="featurette-heading">{{header}}</h2><p class="lead">{{content}}</p></div>',
 })
 
 new Vue({
     el: "#app",
-    data: {},
-    methods: {}
+    data() {
+        return{
+            firstFeatureHeader: 'NAN',
+            secondFeatureHeader: 'NAN',
+            thirdFeatureHeader: 'NAN',
+
+            firstFeatureContent: 'NaN',
+            secondFeatureContent: 'NaN',
+            thirdFeatureContent:'NaN',
+
+            firstTypeOfFeature: 'col-md-7',
+            secondTypeOfFeature: 'col-md-7 col-md-push-5',
+
+            featureHeaders:{
+                firstHeader: 'Качество',
+                secondHeader: 'Опыт',
+                thirdHeader: 'Гибкость',
+             },
+            featureContents:{
+                firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
+                         + 'Vestibulum id ligula porta felis euismod semper. ' 
+                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
+                         + 'Fusce dapibus, tellus ac cursus commodo.',
+                secondText: 'Bonec ullamcorper nulla non metus auctor fringilla.' 
+                         + 'Vestibulum id ligula porta felis euismod semper. ' 
+                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
+                         + 'Fusce dapibus, tellus ac cursus commodo.',
+                thirdText: 'Lonec ullamcorper nulla non metus auctor fringilla.' 
+                         + 'Vestibulum id ligula porta felis euismod semper. ' 
+                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
+                         + 'Fusce dapibus, tellus ac cursus commodo.'
+            }
+        }    
+    },
+    methods: {
+        setFeatureContent: function(name){
+            if(name == "feature-one"){
+                this.firstFeatureContent = this.featureContents.firstText;
+                this.secondFeatureContent = this.featureContents.firstText;
+                this.thirdFeatureContent = this.featureContents.firstText;
+            }
+            if(name == "feature-two"){
+                this.firstFeatureContent = this.featureContents.secondText;
+                this.secondFeatureContent = this.featureContents.secondText;
+                this.thirdFeatureContent = this.featureContents.secondText;
+            }
+            if(name == "feature-three"){
+                this.firstFeatureContent = this.featureContents.thirdText;
+                this.secondFeatureContent = this.featureContents.thirdText;
+                this.thirdFeatureContent = this.featureContents.thirdText;
+            }
+        },
+        setFeatureHeader: function(name){
+            if(name == "feature-one"){
+                this.firstFeatureHeader = this.featureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.firstHeader;
+                this.thirdFeatureHeader = this.featureHeaders.firstHeader;
+            }
+            if(name == "feature-two"){
+                this.firstFeatureHeader = this.featureHeaders.secondHeader;
+                this.secondFeatureHeader = this.featureHeaders.secondHeader;
+                this.thirdFeatureHeader = this.featureHeaders.secondHeader;
+            }
+            if(name == "feature-three"){
+                this.firstFeatureHeader = this.featureHeaders.thirdHeader;
+                this.secondFeatureHeader = this.featureHeaders.thirdHeader;
+                this.thirdFeatureHeader = this.featureHeaders.thirdHeader;
+            }
+        },
+        firstFeatureBlock: function() {
+            this.setFeatureContent('feature-one');
+            this.setFeatureHeader('feature-one');
+        },
+        secondFeatureBlock: function() {
+            this.setFeatureContent('feature-two');
+            this.setFeatureHeader('feature-two');
+        },
+        thirdFeatureBlock: function() {
+            this.setFeatureContent('feature-three');
+            this.setFeatureHeader('feature-three');
+        }
+    }
 })

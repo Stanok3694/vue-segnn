@@ -114,19 +114,19 @@
           <img class="img-circle" src="C:\repo-seg\vue-segnn\assets\images\MockForAvatar.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Электромонтажные работы</h2>
           <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" role="button" v-on:click="firstFeatureBlock">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="C:\repo-seg\vue-segnn\assets\images\MockForAvatar.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Энергоаудит</h2>
           <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" role="button" v-on:click="secondFeatureBlock">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="C:\repo-seg\vue-segnn\assets\images\MockForAvatar.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Специальные виды работ</h2>
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" role="button" v-on:click="thirdFeatureBlock">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
@@ -134,7 +134,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
-        <feature-content type="1"></feature-content>
+        <feature-content :feature="firstTypeOfFeature" :header = "firstFeatureHeader" :content="firstFeatureContent"></feature-content>
         <!-- feature-image-component -->
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="C:\repo-seg\vue-segnn\assets\images\MockForFeauture.png" alt="Generic placeholder image">
@@ -144,7 +144,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
-        <feature-content type="2"></feature-content>
+        <feature-content :feature="secondTypeOfFeature" :header = "secondFeatureHeader" :content="secondFeatureContent"></feature-content>
         <!-- feature-image-component -->
         <div class="col-md-5 col-md-pull-7">
           <img class="featurette-image img-responsive center-block" src="C:\repo-seg\vue-segnn\assets\images\MockForFeauture.png" alt="Generic placeholder image">
@@ -154,7 +154,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
-        <feature-content type="3"></feature-content>
+        <feature-content :feature="firstTypeOfFeature" :header = "thirdFeatureHeader" :content="thirdFeatureContent"></feature-content>
         <!-- feature-image-component -->
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="C:\repo-seg\vue-segnn\assets\images\MockForFeauture.png" alt="Generic placeholder image">

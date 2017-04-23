@@ -41,15 +41,37 @@ Vue.component('feature-content', {
               '</div>',
 }) 
 
+Vue.component('feature-image', {
+    props: {
+        visibility: {
+            type: Boolean,
+            required: true
+        },
+        source: {
+            type: String,
+            required: true
+        },
+        feature: {
+            type: String,
+            required: true
+        }
+    },
+    template: '<div :class="feature" v-if= "visibility">' +
+                '<img class="featurette-image img-responsive center-block"' + 
+                ':src="source"' + 
+                'alt="Generic placeholder image">' +
+              '</div>'
+})
+
 new Vue({
     el: "#app",
     data() {
         return{
-            // feature-content headers with default data  
+            // feature-content headers default data  
             firstFeatureHeader: 'Качество',
             secondFeatureHeader: 'Опыт',
             thirdFeatureHeader: 'Гибкость',
-            // feature-content contents with default data
+            // feature-content contents default data
             firstFeatureContent: 'Ключевой критерий для нас - качество выполняемых работ. ' 
                          + 'Проводником нашего стремления к максимальному качеству стал комплекс '
                          + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
@@ -62,14 +84,23 @@ new Vue({
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
-            
+            // feature-images default URLs
+            firstImage: 'assets/images/features/MockForFeauture1.png',
+            secondImage: 'assets/images/features/MockForFeauture1.png',
+            thirdImage: 'assets/images/features/MockForFeauture1.png',
             // classes data
             firstTypeOfFeature: 'col-md-7',
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
+            firstTypeOfImage: 'col-md-5',
+            secondTypeOfImage: 'col-md-5 col-md-pull-7',
             // flags
-            isFirstVisible: true,
-            isSecondVisible: true,
-            isThirdVisible: true,
+            isFirstFeatureVisible: true,
+            isSecondFeatureVisible: true,
+            isThirdFeatureVisible: true,
+
+            isFirstImageVisible: true,
+            isSecondImageVisible: true,
+            isThirdImageVisible: true,
             // data object for header
             featureHeaders: {
                 // for feature-toggler components - will be useful in future
@@ -127,6 +158,27 @@ new Vue({
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ'
+            },
+            // data object for images
+            featureImages: {
+                defaultImages: {
+                    firstImage: 'assets/images/features/MockForFeauture1.png',
+                    secondImage: 'assets/images/features/MockForFeauture1.png',
+                    thirdImage: 'assets/images/features/MockForFeauture1.png'
+                },
+                wiringFeatureImages: {
+                    firstImage: 'assets/images/features/MockForFeauture2.png',
+                    secondImage: 'assets/images/features/MockForFeauture2.png',
+                    thirdImage: 'assets/images/features/MockForFeauture2.png'
+                },
+                energoAuditFeatureImages: {
+                    firstImage: 'assets/images/features/MockForFeauture3.png',
+                    secondImage: 'assets/images/features/MockForFeauture3.png'
+                },
+                specialWorksFeatureImages: {
+                    firstImage: 'assets/images/features/MockForFeauture4.png',
+                    secondImage: 'assets/images/features/MockForFeauture4.png'
+                }
             }
         }    
     },
@@ -135,24 +187,28 @@ new Vue({
         firstFeatureBlock: function() {
             this.setFeatureContent('feature-one');
             this.setFeatureHeader('feature-one');
+            this.setFeatureImage('feature-one');
             this.toggleFeatureContentBlockVisibility('feature-one');
         },
         secondFeatureBlock: function() {
             this.setFeatureContent('feature-two');
             this.setFeatureHeader('feature-two');
+            this.setFeatureImage('feature-two');
             this.toggleFeatureContentBlockVisibility('feature-two');
         },
         thirdFeatureBlock: function() {
             this.setFeatureContent('feature-three');
             this.setFeatureHeader('feature-three');
+            this.setFeatureImage('feature-three');
             this.toggleFeatureContentBlockVisibility('feature-three');
         },
         resetContentAndHeaders: function(){
             this.setVisibleForThirdBlock();
             this.setDefaultFeaturesContents();
             this.setDefaultFeaturesHeaders();
+            this.setDefaultFeaturesImages();
         },
-// setters for feature-content component's data
+// setters for feature-content and feature-image components DEFAULT data
         setDefaultFeaturesContents: function(){
             this.firstFeatureContent = this.featureContents.firstDefaultText;
             this.secondFeatureContent = this.featureContents.secondDefaultText;
@@ -163,6 +219,28 @@ new Vue({
             this.secondFeatureHeader = this.featureHeaders.defaultFeatureHeaders.secondDefaultHeader;
             this.thirdFeatureHeader = this.featureHeaders.defaultFeatureHeaders.thirdDefaultHeader;
         },
+        setDefaultFeaturesImages: function(){
+            this.firstImage = this.featureImages.defaultImages.firstImage;
+            this.secondImage = this.featureImages.defaultImages.secondImage;
+            this.thirdImage = this.featureImages.defaultImages.thirdImage;
+        },
+// setters for feature-content and feature-image components ACTUAL data
+        setFeatureHeader: function(name){
+            if(name == "feature-one"){
+                this.firstFeatureHeader = this.featureHeaders.wiringFeatureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.wiringFeatureHeaders.secondHeader;
+                this.thirdFeatureHeader = this.featureHeaders.wiringFeatureHeaders.thirdHeader;
+            }
+            if(name == "feature-two"){
+                this.firstFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.secondHeader;
+            }
+            if(name == "feature-three"){
+                this.firstFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.secondHeader;
+            }
+        },
+        // should change this method for real data
         setFeatureContent: function(name){
             if(name == "feature-one"){
                 this.firstFeatureContent = this.featureContents.firstText;
@@ -180,19 +258,19 @@ new Vue({
                 this.thirdFeatureContent = this.featureContents.thirdText;
             }
         },
-        setFeatureHeader: function(name){
+        setFeatureImage: function(name){
             if(name == "feature-one"){
-                this.firstFeatureHeader = this.featureHeaders.wiringFeatureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.wiringFeatureHeaders.secondHeader;
-                this.thirdFeatureHeader = this.featureHeaders.wiringFeatureHeaders.thirdHeader;
+                this.firstImage = this.featureImages.wiringFeatureImages.firstImage;
+                this.secondImage = this.featureImages.wiringFeatureImages.secondImage;
+                this.thirdImage = this.featureImages.wiringFeatureImages.thirdImage;
             }
             if(name == "feature-two"){
-                this.firstFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.secondHeader;
+                this.firstImage = this.featureImages.energoAuditFeatureImages.firstImage;
+                this.secondImage = this.featureImages.energoAuditFeatureImages.secondImage;
             }
             if(name == "feature-three"){
-                this.firstFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.secondHeader;
+                this.firstImage = this.featureImages.specialWorksFeatureImages.firstImage;
+                this.secondImage = this.featureImages.specialWorksFeatureImages.secondImage;
             }
         },
 // visible-unvisible triggers
@@ -201,11 +279,13 @@ new Vue({
                 this.setVisibleForThirdBlock();
             }
             if(name == 'feature-two' || name == 'feature-three'){
-                this.isThirdVisible = false;                
+                this.isThirdFeatureVisible = false;
+                this.isThirdImageVisible = false;                
             }
         },
         setVisibleForThirdBlock: function(){
-            this.isThirdVisible = true;
+            this.isThirdFeatureVisible = true;
+            this.isThirdImageVisible = true;
         }
     }
 })

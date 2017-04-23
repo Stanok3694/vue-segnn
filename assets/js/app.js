@@ -135,6 +135,7 @@ new Vue({
         firstFeatureBlock: function() {
             this.setFeatureContent('feature-one');
             this.setFeatureHeader('feature-one');
+            this.toggleFeatureContentBlockVisibility('feature-one');
         },
         secondFeatureBlock: function() {
             this.setFeatureContent('feature-two');
@@ -147,7 +148,7 @@ new Vue({
             this.toggleFeatureContentBlockVisibility('feature-three');
         },
         resetContentAndHeaders: function(){
-            this.isThirdVisible = true;
+            this.setVisibleForThirdBlock();
             this.setDefaultFeaturesContents();
             this.setDefaultFeaturesHeaders();
         },
@@ -196,9 +197,15 @@ new Vue({
         },
 // visible-unvisible triggers
         toggleFeatureContentBlockVisibility: function(name){
+            if(name == 'feature-one'){
+                this.setVisibleForThirdBlock();
+            }
             if(name == 'feature-two' || name == 'feature-three'){
                 this.isThirdVisible = false;                
             }
+        },
+        setVisibleForThirdBlock: function(){
+            this.isThirdVisible = true;
         }
     }
 })

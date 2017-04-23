@@ -31,18 +31,21 @@ Vue.component('feature-content', {
             required: true
         },
     },
-    template: '<div :class="feature"><h2 class="featurette-heading">{{header}}</h2><p class="lead">{{content}}</p></div>',
+    template: '<div :class="feature">' + 
+                '<h2 class="featurette-heading">{{header}}</h2>' +
+                '<p class="lead">{{content}}</p>' + 
+              '</div>',
 })
 
 new Vue({
     el: "#app",
     data() {
         return{
-            // description variables with default data  
+            // feature-content headers with default data  
             firstFeatureHeader: 'Качество',
             secondFeatureHeader: 'Опыт',
             thirdFeatureHeader: 'Гибкость',
-
+            // feature-content contents with default data
             firstFeatureContent: 'Ключевой критерий для нас - качество выполняемых работ. ' 
                          + 'Проводником нашего стремления к максимальному качеству стал комплекс '
                          + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
@@ -55,8 +58,7 @@ new Vue({
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
-            // flags
-            isThisFirstLaunch: true,
+            
             // classes data
             firstTypeOfFeature: 'col-md-7',
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
@@ -100,27 +102,34 @@ new Vue({
         }    
     },
     methods: {
+// trigges for setting data in feature-content components
+        firstFeatureBlock: function() {
+            this.setFeatureContent('feature-one');
+            this.setFeatureHeader('feature-one');
+        },
+        secondFeatureBlock: function() {
+            this.setFeatureContent('feature-two');
+            this.setFeatureHeader('feature-two');
+        },
+        thirdFeatureBlock: function() {
+            this.setFeatureContent('feature-three');
+            this.setFeatureHeader('feature-three');
+        },
         resetContentAndHeaders: function(){
-            this.isThisFirstLaunch = true;
             this.setDefaultFeaturesContents();
             this.setDefaultFeaturesHeaders();
         },
-
+// setters for feature-content component's data
         setDefaultFeaturesContents: function(){
-            if(this.isThisFirstLaunch){
-                this.firstFeatureContent = this.featureContents.firstDefaultText;
-                this.secondFeatureContent = this.featureContents.secondDefaultText;
-                this.thirdFeatureContent = this.featureContents.thirdDefaultText;
-            }
+            this.firstFeatureContent = this.featureContents.firstDefaultText;
+            this.secondFeatureContent = this.featureContents.secondDefaultText;
+            this.thirdFeatureContent = this.featureContents.thirdDefaultText;
         },
         setDefaultFeaturesHeaders: function(){
-            if(this.isThisFirstLaunch){
-                this.firstFeatureHeader = this.featureHeaders.firstDefaultHeader;
-                this.secondFeatureHeader = this.featureHeaders.secondDefaultHeader;
-                this.thirdFeatureHeader = this.featureHeaders.thirdDefaultHeader;
-            }
+            this.firstFeatureHeader = this.featureHeaders.firstDefaultHeader;
+            this.secondFeatureHeader = this.featureHeaders.secondDefaultHeader;
+            this.thirdFeatureHeader = this.featureHeaders.thirdDefaultHeader;
         },
-
         setFeatureContent: function(name){
             if(name == "feature-one"){
                 this.firstFeatureContent = this.featureContents.firstText;
@@ -155,21 +164,5 @@ new Vue({
                 this.thirdFeatureHeader = this.featureHeaders.thirdHeader;
             }
         },
-
-        firstFeatureBlock: function() {
-            this.isThisFirstLaunch = false;
-            this.setFeatureContent('feature-one');
-            this.setFeatureHeader('feature-one');
-        },
-        secondFeatureBlock: function() {
-            this.isThisFirstLaunch = false;
-            this.setFeatureContent('feature-two');
-            this.setFeatureHeader('feature-two');
-        },
-        thirdFeatureBlock: function() {
-            this.isThisFirstLaunch = false;
-            this.setFeatureContent('feature-three');
-            this.setFeatureHeader('feature-three');
-        }
     }
 })

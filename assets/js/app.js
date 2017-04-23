@@ -60,7 +60,17 @@ new Vue({
             // classes data
             firstTypeOfFeature: 'col-md-7',
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
-            // data objects for content
+            // data object for header
+            featureHeaders: {
+                firstDefaultHeader: 'Качество',
+                secondDefaultHeader: 'Опыт',
+                thirdDefaultHeader: 'Гибкость',
+
+                firstHeader: 'Электромонтажные работы',
+                secondHeader: 'Энергоаудит',
+                thirdHeader: 'Специальные виды работ'
+            },
+            // data object for content
             featureContents:{
                 firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 

@@ -64,13 +64,16 @@ new Vue({
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
             // data object for header
             featureHeaders: {
-                firstDefaultHeader: 'Качество',
-                secondDefaultHeader: 'Опыт',
-                thirdDefaultHeader: 'Гибкость',
-
-                firstHeader: 'Электромонтажные работы',
-                secondHeader: 'Энергоаудит',
-                thirdHeader: 'Специальные виды работ'
+                defaultFeatureHeaders: {
+                    firstDefaultHeader: 'Качество',
+                    secondDefaultHeader: 'Опыт',
+                    thirdDefaultHeader: 'Гибкость',
+                },
+                featureTogglersHeaders:{
+                    firstHeader: 'Электромонтажные работы',
+                    secondHeader: 'Энергоаудит',
+                    thirdHeader: 'Специальные виды работ',
+                }
             },
             // data object for content
             featureContents:{
@@ -126,9 +129,9 @@ new Vue({
             this.thirdFeatureContent = this.featureContents.thirdDefaultText;
         },
         setDefaultFeaturesHeaders: function(){
-            this.firstFeatureHeader = this.featureHeaders.firstDefaultHeader;
-            this.secondFeatureHeader = this.featureHeaders.secondDefaultHeader;
-            this.thirdFeatureHeader = this.featureHeaders.thirdDefaultHeader;
+            this.firstFeatureHeader = this.featureHeaders.defaultFeatureHeaders.firstDefaultHeader;
+            this.secondFeatureHeader = this.featureHeaders.defaultFeatureHeaders.secondDefaultHeader;
+            this.thirdFeatureHeader = this.featureHeaders.defaultFeatureHeaders.thirdDefaultHeader;
         },
         setFeatureContent: function(name){
             if(name == "feature-one"){
@@ -149,19 +152,19 @@ new Vue({
         },
         setFeatureHeader: function(name){
             if(name == "feature-one"){
-                this.firstFeatureHeader = this.featureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.firstHeader;
-                this.thirdFeatureHeader = this.featureHeaders.firstHeader;
+                this.firstFeatureHeader = this.featureHeaders.featureTogglersHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.featureTogglersHeaders.firstHeader;
+                this.thirdFeatureHeader = this.featureHeaders.featureTogglersHeaders.firstHeader;
             }
             if(name == "feature-two"){
-                this.firstFeatureHeader = this.featureHeaders.secondHeader;
-                this.secondFeatureHeader = this.featureHeaders.secondHeader;
-                this.thirdFeatureHeader = this.featureHeaders.secondHeader;
+                this.firstFeatureHeader = this.featureHeaders.featureTogglersHeaders.secondHeader;
+                this.secondFeatureHeader = this.featureHeaders.featureTogglersHeaders.secondHeader;
+                this.thirdFeatureHeader = this.featureHeaders.featureTogglersHeaders.secondHeader;
             }
             if(name == "feature-three"){
-                this.firstFeatureHeader = this.featureHeaders.thirdHeader;
-                this.secondFeatureHeader = this.featureHeaders.thirdHeader;
-                this.thirdFeatureHeader = this.featureHeaders.thirdHeader;
+                this.firstFeatureHeader = this.featureHeaders.featureTogglersHeaders.thirdHeader;
+                this.secondFeatureHeader = this.featureHeaders.featureTogglersHeaders.thirdHeader;
+                this.thirdFeatureHeader = this.featureHeaders.featureTogglersHeaders.thirdHeader;
             }
         },
     }

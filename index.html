@@ -134,7 +134,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
-        <feature-content :feature="firstTypeOfFeature" :header = "firstFeatureHeader" :content="firstFeatureContent"></feature-content>
+        <feature-content :visibility="isFirstVisible" :feature="firstTypeOfFeature" :header = "firstFeatureHeader" :content="firstFeatureContent"></feature-content>
         <!-- feature-image-component -->
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="assets/images/MockForFeauture.png" alt="Generic placeholder image">
@@ -144,7 +144,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
-        <feature-content :feature="secondTypeOfFeature" :header = "secondFeatureHeader" :content="secondFeatureContent"></feature-content>
+        <feature-content :visibility="isSecondVisible" :feature="secondTypeOfFeature" :header = "secondFeatureHeader" :content="secondFeatureContent"></feature-content>
         <!-- feature-image-component -->
         <div class="col-md-5 col-md-pull-7">
           <img class="featurette-image img-responsive center-block" src="assets/images/MockForFeauture.png" alt="Generic placeholder image">
@@ -154,7 +154,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
-        <feature-content :feature="firstTypeOfFeature" :header = "thirdFeatureHeader" :content="thirdFeatureContent"></feature-content>
+        <feature-content :visibility="isThirdVisible" :feature="firstTypeOfFeature" :header = "thirdFeatureHeader" :content="thirdFeatureContent"></feature-content>
         <!-- feature-image-component -->
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="assets/images/MockForFeauture.png" alt="Generic placeholder image">

@@ -30,12 +30,16 @@ Vue.component('feature-content', {
             type: String,
             required: true
         },
+        visibility: {
+            type: Boolean,
+            required: true
+        }
     },
-    template: '<div :class="feature">' + 
+    template: '<div :class="feature" v-if="visibility">' + 
                 '<h2 class="featurette-heading">{{header}}</h2>' +
                 '<p class="lead">{{content}}</p>' + 
               '</div>',
-})
+}) 
 
 new Vue({
     el: "#app",
@@ -62,17 +66,39 @@ new Vue({
             // classes data
             firstTypeOfFeature: 'col-md-7',
             secondTypeOfFeature: 'col-md-7 col-md-push-5',
+            // flags
+            isFirstVisible: true,
+            isSecondVisible: true,
+            isThirdVisible: true,
             // data object for header
             featureHeaders: {
-                defaultFeatureHeaders: {
-                    firstDefaultHeader: 'Качество',
-                    secondDefaultHeader: 'Опыт',
-                    thirdDefaultHeader: 'Гибкость',
-                },
+                // for feature-toggler components - will be useful in future
                 featureTogglersHeaders:{
                     firstHeader: 'Электромонтажные работы',
                     secondHeader: 'Энергоаудит',
-                    thirdHeader: 'Специальные виды работ',
+                    thirdHeader: 'Специальные виды работ'
+                },
+                // for "ГЛАВНАЯ" feature-content components
+                defaultFeatureHeaders: {
+                    firstDefaultHeader: 'Качество',
+                    secondDefaultHeader: 'Опыт',
+                    thirdDefaultHeader: 'Гибкость'
+                },
+                // for "ЭЛЕКТРОМОНТАЖНЫЕ РАБОТЫ" feature-content components
+                wiringFeatureHeaders:{
+                    firstHeader: 'Производство электромонтажных работ',
+                    secondHeader: 'Бестраншейная прокладка коммуникаций',
+                    thirdHeader: 'Пусконаладочные работы'
+                },
+                // for "ЭНЕРГОАУДИТ" feature-content components
+                energoAuditFeatureHeaders:{
+                    firstHeader: 'Анализ',
+                    secondHeader: 'Отчёт'
+                },                
+                // for "ЭНЕРГОАУДИТ" feature-content components
+                specialWorksFeatureHeaders:{
+                    firstHeader: 'Ремонт',
+                    secondHeader: 'Монтаж'
                 }
             },
             // data object for content
@@ -113,12 +139,15 @@ new Vue({
         secondFeatureBlock: function() {
             this.setFeatureContent('feature-two');
             this.setFeatureHeader('feature-two');
+            this.toggleFeatureContentBlockVisibility('feature-two');
         },
         thirdFeatureBlock: function() {
             this.setFeatureContent('feature-three');
             this.setFeatureHeader('feature-three');
+            this.toggleFeatureContentBlockVisibility('feature-three');
         },
         resetContentAndHeaders: function(){
+            this.isThirdVisible = true;
             this.setDefaultFeaturesContents();
             this.setDefaultFeaturesHeaders();
         },
@@ -152,20 +181,24 @@ new Vue({
         },
         setFeatureHeader: function(name){
             if(name == "feature-one"){
-                this.firstFeatureHeader = this.featureHeaders.featureTogglersHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.featureTogglersHeaders.firstHeader;
-                this.thirdFeatureHeader = this.featureHeaders.featureTogglersHeaders.firstHeader;
+                this.firstFeatureHeader = this.featureHeaders.wiringFeatureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.wiringFeatureHeaders.secondHeader;
+                this.thirdFeatureHeader = this.featureHeaders.wiringFeatureHeaders.thirdHeader;
             }
             if(name == "feature-two"){
-                this.firstFeatureHeader = this.featureHeaders.featureTogglersHeaders.secondHeader;
-                this.secondFeatureHeader = this.featureHeaders.featureTogglersHeaders.secondHeader;
-                this.thirdFeatureHeader = this.featureHeaders.featureTogglersHeaders.secondHeader;
+                this.firstFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.secondHeader;
             }
             if(name == "feature-three"){
-                this.firstFeatureHeader = this.featureHeaders.featureTogglersHeaders.thirdHeader;
-                this.secondFeatureHeader = this.featureHeaders.featureTogglersHeaders.thirdHeader;
-                this.thirdFeatureHeader = this.featureHeaders.featureTogglersHeaders.thirdHeader;
+                this.firstFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.firstHeader;
+                this.secondFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.secondHeader;
             }
         },
+// visible-unvisible triggers
+        toggleFeatureContentBlockVisibility: function(name){
+            if(name == 'feature-two' || name == 'feature-three'){
+                this.isThirdVisible = false;                
+            }
+        }
     }
 })

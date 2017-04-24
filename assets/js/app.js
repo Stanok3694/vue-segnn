@@ -1,5 +1,5 @@
 
-// custom footer
+// my-footer-component
 Vue.component('my-footer', {
     props: {
         divider: {
@@ -69,7 +69,7 @@ Vue.component('feature-content', {
                 '</div>' +
               '</div>',
 }) 
-
+// feature-image-component
 Vue.component('feature-image', {
     props: {
         visibility: {
@@ -91,16 +91,92 @@ Vue.component('feature-image', {
                 'alt="Generic placeholder image">' +
               '</div>'
 })
+// feature-toggler-component
+Vue.component('feature-toggler',{
+    props: {
+        toggler: {
+            type: String,
+            required: true
+        },
+        header: {
+            type: String,
+            required: true
+        },
+        content: {
+            type: String,
+            required: true
+        },
+        feature: {
+            type: String,
+            required: true
+        },
+        source: {
+            type: String,
+            required: true
+        }        
+    },
+    template: '<div :class="feature">' + 
+                '<img class="img-circle"' + 
+                    ':src="source"' + 
+                    'alt="Generic placeholder image"' + 
+                    'width="140" height="140">' +
+                '<h2>{{header}}</h2>' + 
+                '<p>{{content}}</p>' + 
+                '<p>' + 
+                    '<a class="btn btn-default"' + 
+                        'role="button"' + 
+                        'v-on:click="changeFeatureBlock"' + 
+                    '>' + 
+                        'Подробнее &raquo;' + 
+                    '</a>' +
+                '</p>' +
+              '</div>',
+    data: function(){
+        return {
+            tooglerType: this.toggler
+        }
+    },
+    methods: {
+        changeFeatureBlock: function(){
+            if(this.tooglerType == "firstFeatureToggler"){
+                this.$parent.$emit('selectFirstFeatureBlock')
+            }
+            if(this.tooglerType == "secondFeatureToggler"){
+                this.$parent.$emit('selectSecondFeatureBlock')
+            }
+            if(this.tooglerType == "thirdFeatureToggler"){
+                this.$parent.$emit('selectThirdFeatureBlock')
+            }
+        }
+    }
+})
 
 new Vue({
     el: "#app",
+// DATA:
     data() {
         return{
-            // feature-content headers default data  
+    // feature-toggler headers data
+            firstTogglerHeader: 'Электромонтажные работы',
+            secondTogglerHeader: 'Энергоаудит',
+            thirdTogglerHeader: 'Специальные виды работ',
+    // feature-toggler contents data
+            firstTogglerContent: 'Основное направление деятельности СтройЭлектроГрупп. ' 
+                         + 'Оказываем полный комплекс услуг по электромонтажу.',
+            secondTogglerContent: 'Предварительный энергоаудит или энергоаудит, как отдельная услуга? ' 
+                         + 'Это не важно. Для Вас мы готовы провести глубокое исследование в сфере ' 
+                         + 'аудита энергосетей.',
+            thirdTogglerContent: 'Работы любого уровня сложности. Сложные проектный виды работ. ' 
+                         + 'В области электромонтажа для СтройЭлектроГрупп нет ничего невозможного.',
+    // feature-toggler type
+            firstTogglerType: 'firstFeatureToggler',
+            secondTogglerType: 'secondfirstFeatureToggler',
+            thirdTogglerType: 'thirdFeatureToggler',
+    // feature-content headers default data  
             firstFeatureHeader: 'Качество',
             secondFeatureHeader: 'Опыт',
             thirdFeatureHeader: 'Гибкость',
-            // feature-content contents default data
+    // feature-content contents default data
             firstFeatureContent: 'Ключевой критерий для нас - качество выполняемых работ. ' 
                          + 'Проводником нашего стремления к максимальному качеству стал комплекс '
                          + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
@@ -113,16 +189,21 @@ new Vue({
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
-            // feature-images default URLs
+    // feature-images default URLs
             firstImage: 'assets/images/features/MockForFeauture1.png',
             secondImage: 'assets/images/features/MockForFeauture1.png',
             thirdImage: 'assets/images/features/MockForFeauture1.png',
-            // classes data
-            firstTypeOfFeature: 'col-md-7',
-            secondTypeOfFeature: 'col-md-7 col-md-push-5',
-            firstTypeOfImage: 'col-md-5',
-            secondTypeOfImage: 'col-md-5 col-md-pull-7',
-            // flags
+    // feature-toggler images urls
+            firstImage: 'assets/images/avatars/MockForAvatar1.png',
+            secondImage: 'assets/images/avatars/MockForAvatar2.png',
+            thirdImage: 'assets/images/avatars/MockForAvatar3.png',
+    // classes data
+                firstTypeOfFeature: 'col-md-7',
+                secondTypeOfFeature: 'col-md-7 col-md-push-5',
+                firstTypeOfImage: 'col-md-5',
+                secondTypeOfImage: 'col-md-5 col-md-pull-7',
+                featureToggleType: 'col-lg-4', 
+    // flags
             isFirstFeatureVisible: true,
             isSecondFeatureVisible: true,
             isThirdFeatureVisible: true,
@@ -135,7 +216,7 @@ new Vue({
             isFirstImageVisible: true,
             isSecondImageVisible: true,
             isThirdImageVisible: true,
-            // data object for header
+    // data object for header
             featureHeaders: {
                 // for feature-toggler components - will be useful in future
                 featureTogglersHeaders:{
@@ -166,7 +247,7 @@ new Vue({
                     secondHeader: 'Монтаж'
                 }
             },
-            // data object for content
+    // data object for content
             featureContents:{
                 firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 
@@ -193,8 +274,8 @@ new Vue({
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ'
             },
-            // data object for images
-            featureImages: {
+    // data object for images
+                featureImages: {
                 defaultImages: {
                     firstImage: 'assets/images/features/MockForFeauture1.png',
                     secondImage: 'assets/images/features/MockForFeauture1.png',
@@ -213,11 +294,12 @@ new Vue({
                     firstImage: 'assets/images/features/MockForFeauture4.png',
                     secondImage: 'assets/images/features/MockForFeauture4.png'
                 }
-            }
-        }    
-    },
+                }
+            }    
+        },
+// METHODS:
     methods: {
-// trigges for setting data in feature-content components
+    // trigges for setting data in feature-content components
         firstFeatureBlock: function() {
             this.setFeatureContent('feature-one');
             this.setFeatureHeader('feature-one');
@@ -240,7 +322,7 @@ new Vue({
             this.setVisible();
             this.setDefaultData();
         },
-// setters for feature-content and feature-image components DEFAULT data
+    // setters for feature-content and feature-image components DEFAULT data
         setDefaultData: function(){
             this.setDefaultFeaturesContents();
             this.setDefaultFeaturesHeaders();
@@ -261,7 +343,7 @@ new Vue({
             this.secondImage = this.featureImages.defaultImages.secondImage;
             this.thirdImage = this.featureImages.defaultImages.thirdImage;
         },
-// setters for feature-content and feature-image components ACTUAL data
+    // setters for feature-content and feature-image components ACTUAL data
         setFeatureHeader: function(name){
             if(name == "feature-one"){
                 this.firstFeatureHeader = this.featureHeaders.wiringFeatureHeaders.firstHeader;
@@ -310,7 +392,7 @@ new Vue({
                 this.secondImage = this.featureImages.specialWorksFeatureImages.secondImage;
             }
         },
-// visible-unvisible triggers
+    // visible-unvisible triggers
         toggleFeatureContentBlockVisibility: function(name){
             if(name == 'feature-one'){
                 this.setVisible();
@@ -341,5 +423,11 @@ new Vue({
         setVisibleForThirdDivider: function(){
             this.isThirdDividerVisible = true;
         }
+    },
+// MOUNTED:
+    mounted: function(){
+        this.$on('selectFirstFeatureBlock', this.firstFeatureBlock);
+        this.$on('selectSecondFeatureBlock', this.secondFeatureBlock);
+        this.$on('selectThirdFeatureBlock', this.thirdFeatureBlock);
     }
 })

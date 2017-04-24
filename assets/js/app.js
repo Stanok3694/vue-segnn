@@ -156,6 +156,23 @@ new Vue({
 // DATA:
     data() {
         return{
+            projects: {
+                firstProject:{
+                    owner: 'ОАО «Мобильные Теле Системы»',
+                    name: 'Внешнее электроснабжение БССС №52204, г.Арзамас, ул. 9 мая, д.25',
+                    data: 'Воздушно-кабельная линия 0,4кВ длиной 450м'
+                },
+                secondProject:{
+                    owner: 'ЗАО «Ойкумена»',
+                    name: 'Электроснабжение жилого комплекса «Гагаринские высоты» по пр. Гагарина в р-не НГСХА',
+                    data: 'Кабельная линия 6 кВ от ПС 110/6кВ «Мыза» длиной 3050м'
+                },
+                thirdProject:{
+                    owner: 'ОАО «Тульские городские электрические сети»',
+                    name: 'Проектирование кабеля 6 кВ от ПС№218 "Южная" до РП 41 в Привокзальном районе г.Тулы',
+                    data: 'КЛ 6 кВ длиной 2800м,камера КСО- 1 шт., пристрой к РП'
+                },
+            },
     // feature-toggler headers data
             firstTogglerHeader: 'Электромонтажные работы',
             secondTogglerHeader: 'Энергоаудит',
@@ -218,7 +235,8 @@ new Vue({
             isThirdImageVisible: true,
 
             isTogglerBlockVisible: true,
-
+            isProjectsShow: false,
+            isFeaturesBlockVisible: true,
     // data object for header
             featureHeaders: {
                 // for feature-toggler components - will be useful in future
@@ -279,29 +297,34 @@ new Vue({
             },
     // data object for images
                 featureImages: {
-                defaultImages: {
-                    firstImage: 'assets/images/features/MockForFeauture1.png',
-                    secondImage: 'assets/images/features/MockForFeauture1.png',
-                    thirdImage: 'assets/images/features/MockForFeauture1.png'
-                },
-                wiringFeatureImages: {
-                    firstImage: 'assets/images/features/MockForFeauture2.png',
-                    secondImage: 'assets/images/features/MockForFeauture2.png',
-                    thirdImage: 'assets/images/features/MockForFeauture2.png'
-                },
-                energoAuditFeatureImages: {
-                    firstImage: 'assets/images/features/MockForFeauture3.png',
-                    secondImage: 'assets/images/features/MockForFeauture3.png'
-                },
-                specialWorksFeatureImages: {
-                    firstImage: 'assets/images/features/MockForFeauture4.png',
-                    secondImage: 'assets/images/features/MockForFeauture4.png'
-                }
+                    defaultImages: {
+                        firstImage: 'assets/images/features/MockForFeauture1.png',
+                        secondImage: 'assets/images/features/MockForFeauture1.png',
+                        thirdImage: 'assets/images/features/MockForFeauture1.png'
+                    },
+                    wiringFeatureImages: {
+                        firstImage: 'assets/images/features/MockForFeauture2.png',
+                        secondImage: 'assets/images/features/MockForFeauture2.png',
+                        thirdImage: 'assets/images/features/MockForFeauture2.png'
+                    },
+                        energoAuditFeatureImages: {
+                        firstImage: 'assets/images/features/MockForFeauture3.png',
+                        secondImage: 'assets/images/features/MockForFeauture3.png'
+                    },
+                        specialWorksFeatureImages: {
+                        firstImage: 'assets/images/features/MockForFeauture4.png',
+                        secondImage: 'assets/images/features/MockForFeauture4.png'
+                    }
                 }
             }    
         },
 // METHODS:
     methods: {
+        togglePortfolioShow: function() {
+            this.isProjectsShow = true;
+            this.isTogglerBlockVisible = false;
+            this.isFeaturesBlockVisible = false;
+        },
     // trigges for setting data in feature-content components
         firstFeatureBlock: function() {
             this.setFeatureContent('feature-one');
@@ -325,6 +348,8 @@ new Vue({
             this.toggleFeatureToggleBlockVisibility('close');
         },
         resetContentAndHeaders: function(){
+            this.isProjectsShow = false;
+            this.isFeaturesBlockVisible = true;
             this.setVisible();
             this.setDefaultData();
             this.toggleFeatureToggleBlockVisibility('open');

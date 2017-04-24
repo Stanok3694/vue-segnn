@@ -170,7 +170,7 @@ new Vue({
                          + 'В области электромонтажа для СтройЭлектроГрупп нет ничего невозможного.',
     // feature-toggler type
             firstTogglerType: 'firstFeatureToggler',
-            secondTogglerType: 'secondfirstFeatureToggler',
+            secondTogglerType: 'secondFeatureToggler',
             thirdTogglerType: 'thirdFeatureToggler',
     // feature-content headers default data  
             firstFeatureHeader: 'Качество',
@@ -190,13 +190,13 @@ new Vue({
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
     // feature-images default URLs
-            firstImage: 'assets/images/features/MockForFeauture1.png',
-            secondImage: 'assets/images/features/MockForFeauture1.png',
-            thirdImage: 'assets/images/features/MockForFeauture1.png',
+            firstFeatureImage: 'assets/images/features/MockForFeauture1.png',
+            secondFeatureImage: 'assets/images/features/MockForFeauture1.png',
+            thirdFeatureImage: 'assets/images/features/MockForFeauture1.png',
     // feature-toggler images urls
-            firstImage: 'assets/images/avatars/MockForAvatar1.png',
-            secondImage: 'assets/images/avatars/MockForAvatar2.png',
-            thirdImage: 'assets/images/avatars/MockForAvatar3.png',
+            firstAvatarImage: 'assets/images/avatars/MockForAvatar1.png',
+            secondAvatarImage: 'assets/images/avatars/MockForAvatar2.png',
+            thirdAvatarImage: 'assets/images/avatars/MockForAvatar3.png',
     // classes data
                 firstTypeOfFeature: 'col-md-7',
                 secondTypeOfFeature: 'col-md-7 col-md-push-5',
@@ -339,9 +339,9 @@ new Vue({
             this.thirdFeatureHeader = this.featureHeaders.defaultFeatureHeaders.thirdDefaultHeader;
         },
         setDefaultFeaturesImages: function(){
-            this.firstImage = this.featureImages.defaultImages.firstImage;
-            this.secondImage = this.featureImages.defaultImages.secondImage;
-            this.thirdImage = this.featureImages.defaultImages.thirdImage;
+            this.firstFeatureImage = this.featureImages.defaultImages.firstImage;
+            this.secondFeatureImage = this.featureImages.defaultImages.secondImage;
+            this.thirdFeatureImage = this.featureImages.defaultImages.thirdImage;
         },
     // setters for feature-content and feature-image components ACTUAL data
         setFeatureHeader: function(name){
@@ -379,17 +379,17 @@ new Vue({
         },
         setFeatureImage: function(name){
             if(name == "feature-one"){
-                this.firstImage = this.featureImages.wiringFeatureImages.firstImage;
-                this.secondImage = this.featureImages.wiringFeatureImages.secondImage;
-                this.thirdImage = this.featureImages.wiringFeatureImages.thirdImage;
+                this.firstFeatureImage = this.featureImages.wiringFeatureImages.firstImage;
+                this.secondFeatureImage = this.featureImages.wiringFeatureImages.secondImage;
+                this.thirdFeatureImage = this.featureImages.wiringFeatureImages.thirdImage;
             }
             if(name == "feature-two"){
-                this.firstImage = this.featureImages.energoAuditFeatureImages.firstImage;
-                this.secondImage = this.featureImages.energoAuditFeatureImages.secondImage;
+                this.firstFeatureImage = this.featureImages.energoAuditFeatureImages.firstImage;
+                this.secondFeatureImage = this.featureImages.energoAuditFeatureImages.secondImage;
             }
             if(name == "feature-three"){
-                this.firstImage = this.featureImages.specialWorksFeatureImages.firstImage;
-                this.secondImage = this.featureImages.specialWorksFeatureImages.secondImage;
+                this.firstFeatureImage = this.featureImages.specialWorksFeatureImages.firstImage;
+                this.secondFeatureImage = this.featureImages.specialWorksFeatureImages.secondImage;
             }
         },
     // visible-unvisible triggers

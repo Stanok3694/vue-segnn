@@ -116,7 +116,7 @@
           :feature="featureToggleType"
           :header="firstTogglerHeader"
           :content="firstTogglerContent"
-          :source="firstImage">
+          :source="firstAvatarImage">
         </feature-toggler>  
         <!--end of first toggler-->
 
@@ -126,7 +126,7 @@
           :feature="featureToggleType"
           :header="secondTogglerHeader"
           :content="secondTogglerContent"
-          :source="secondImage">
+          :source="secondAvatarImage">
         </feature-toggler>  
         <!--end of first toggler-->
 
@@ -136,7 +136,7 @@
           :feature="featureToggleType"
           :header="thirdTogglerHeader"
           :content="thirdTogglerContent"
-          :source="thirdImage">
+          :source="thirdAvatarImage">
         </feature-toggler>  
         <!--end of first toggler-->
 
@@ -156,7 +156,7 @@
         <!-- feature-image-component -->
         <feature-image
             :visibility="isFirstImageVisible"
-            :source="firstImage"
+            :source="firstFeatureImage"
             :feature="firstTypeOfImage">
         </feature-image>
       </div>
@@ -173,7 +173,7 @@
         <!-- feature-image-component -->
         <feature-image
             :visibility="isSecondImageVisible"
-            :source="secondImage"
+            :source="secondFeatureImage"
             :feature="secondTypeOfImage">
         </feature-image>
       </div>
@@ -190,7 +190,7 @@
         <!-- feature-image-component -->
         <feature-image
             :visibility="isThirdImageVisible"
-            :source="thirdImage"
+            :source="thirdFeatureImage"
             :feature="firstTypeOfImage">
         </feature-image>
       </div>

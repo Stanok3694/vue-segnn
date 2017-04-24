@@ -109,7 +109,7 @@
     <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
-      <div class="row">
+      <div class="row" v-if="isTogglerBlockVisible">
         <!--first toggler-->
         <feature-toggler
           :toggler="firstTogglerType"

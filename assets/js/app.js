@@ -216,6 +216,9 @@ new Vue({
             isFirstImageVisible: true,
             isSecondImageVisible: true,
             isThirdImageVisible: true,
+
+            isTogglerBlockVisible: true,
+
     // data object for header
             featureHeaders: {
                 // for feature-toggler components - will be useful in future
@@ -305,22 +308,26 @@ new Vue({
             this.setFeatureHeader('feature-one');
             this.setFeatureImage('feature-one');
             this.toggleFeatureContentBlockVisibility('feature-one');
+            this.toggleFeatureToggleBlockVisibility('close');
         },
         secondFeatureBlock: function() {
             this.setFeatureContent('feature-two');
             this.setFeatureHeader('feature-two');
             this.setFeatureImage('feature-two');
             this.toggleFeatureContentBlockVisibility('feature-two');
+            this.toggleFeatureToggleBlockVisibility('close');
         },
         thirdFeatureBlock: function() {
             this.setFeatureContent('feature-three');
             this.setFeatureHeader('feature-three');
             this.setFeatureImage('feature-three');
             this.toggleFeatureContentBlockVisibility('feature-three');
+            this.toggleFeatureToggleBlockVisibility('close');
         },
         resetContentAndHeaders: function(){
             this.setVisible();
             this.setDefaultData();
+            this.toggleFeatureToggleBlockVisibility('open');
         },
     // setters for feature-content and feature-image components DEFAULT data
         setDefaultData: function(){
@@ -401,6 +408,16 @@ new Vue({
                 this.setInvisible();              
             }
         },
+        toggleFeatureToggleBlockVisibility: function(param){
+            if(param == "close"){
+                this.isTogglerBlockVisible = false;
+                this.setInvisibleForFirstDivider();
+            }
+            if(param == "open"){
+                this.isTogglerBlockVisible = true;
+                this.setVisibleForFirstDivider();
+            }
+        },
         setVisible: function(){
             this.setVisibleForThirdBlock();
             this.setVisibleForThirdDivider();
@@ -409,19 +426,25 @@ new Vue({
             this.setInvisibleForThirdBlock();
             this.setInvisibleForThirdDivider(); 
         },
-        setInvisibleForThirdBlock: function(){
-            this.isThirdFeatureVisible = false;
-            this.isThirdImageVisible = false; 
-        },
-        setInvisibleForThirdDivider: function(){
-            this.isThirdDividerVisible = false;
-        },
         setVisibleForThirdBlock: function(){
             this.isThirdFeatureVisible = true;
             this.isThirdImageVisible = true;
         },
+        setInvisibleForThirdBlock: function(){
+            this.isThirdFeatureVisible = false;
+            this.isThirdImageVisible = false; 
+        },
+        setVisibleForFirstDivider: function(){
+            this.isFirstDividerVisible = true;
+        },
+        setInvisibleForFirstDivider: function(){
+            this.isFirstDividerVisible = false;
+        },
         setVisibleForThirdDivider: function(){
             this.isThirdDividerVisible = true;
+        },
+        setInvisibleForThirdDivider: function(){
+            this.isThirdDividerVisible = false;
         }
     },
 // MOUNTED:

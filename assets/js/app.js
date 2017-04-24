@@ -1,7 +1,27 @@
 
 // custom footer
 Vue.component('my-footer', {
-    template: '<footer><p class="pull-right"><a href="#">{{upLinkName}}</a></p><p>&copy; {{currentYear}} {{companyName}} &middot;</p></footer>',
+    props: {
+        divider: {
+            type: Boolean,
+            required: true
+        }
+    },
+    template:   '<div>' + 
+                    '<div v-if="divider">' +
+                        '<hr class="featurette-divider">' +
+                    '</div>' +
+                    '<footer>' + 
+                    '<p class="pull-right">' + 
+                        '<a href="#">' +
+                            '{{upLinkName}}' + 
+                        '</a>' + 
+                    '</p>' +
+                    '<p>' + 
+                        '&copy; {{currentYear}} {{companyName}} &middot;' +
+                    '</p>' +
+                    '</footer>' +
+                '</div>',
     data: function(){
         return {
             upLinkName: 'Наверх',
@@ -33,11 +53,20 @@ Vue.component('feature-content', {
         visibility: {
             type: Boolean,
             required: true
+        },
+        divider: {
+            type: Boolean,
+            required: true
         }
     },
-    template: '<div :class="feature" v-if="visibility">' + 
-                '<h2 class="featurette-heading">{{header}}</h2>' +
-                '<p class="lead">{{content}}</p>' + 
+    template: '<div>' +
+                '<div v-if="divider">' +
+                    '<hr class="featurette-divider">' +
+                '</div>' +
+                '<div :class="feature" v-if="visibility">' + 
+                  '<h2 class="featurette-heading">{{header}}</h2>' +
+                  '<p class="lead">{{content}}</p>' + 
+                '</div>' +
               '</div>',
 }) 
 
@@ -97,7 +126,12 @@ new Vue({
             isFirstFeatureVisible: true,
             isSecondFeatureVisible: true,
             isThirdFeatureVisible: true,
-
+            
+            isFirstDividerVisible: true,
+            isSecondDividerVisible: true,
+            isThirdDividerVisible: true,
+            isFooterDividerVisible: true,
+            
             isFirstImageVisible: true,
             isSecondImageVisible: true,
             isThirdImageVisible: true,
@@ -203,12 +237,15 @@ new Vue({
             this.toggleFeatureContentBlockVisibility('feature-three');
         },
         resetContentAndHeaders: function(){
-            this.setVisibleForThirdBlock();
+            this.setVisible();
+            this.setDefaultData();
+        },
+// setters for feature-content and feature-image components DEFAULT data
+        setDefaultData: function(){
             this.setDefaultFeaturesContents();
             this.setDefaultFeaturesHeaders();
             this.setDefaultFeaturesImages();
         },
-// setters for feature-content and feature-image components DEFAULT data
         setDefaultFeaturesContents: function(){
             this.firstFeatureContent = this.featureContents.firstDefaultText;
             this.secondFeatureContent = this.featureContents.secondDefaultText;
@@ -276,16 +313,33 @@ new Vue({
 // visible-unvisible triggers
         toggleFeatureContentBlockVisibility: function(name){
             if(name == 'feature-one'){
-                this.setVisibleForThirdBlock();
+                this.setVisible();
             }
             if(name == 'feature-two' || name == 'feature-three'){
-                this.isThirdFeatureVisible = false;
-                this.isThirdImageVisible = false;                
+                this.setInvisible();              
             }
+        },
+        setVisible: function(){
+            this.setVisibleForThirdBlock();
+            this.setVisibleForThirdDivider();
+        },
+        setInvisible: function(){
+            this.setInvisibleForThirdBlock();
+            this.setInvisibleForThirdDivider(); 
+        },
+        setInvisibleForThirdBlock: function(){
+            this.isThirdFeatureVisible = false;
+            this.isThirdImageVisible = false; 
+        },
+        setInvisibleForThirdDivider: function(){
+            this.isThirdDividerVisible = false;
         },
         setVisibleForThirdBlock: function(){
             this.isThirdFeatureVisible = true;
             this.isThirdImageVisible = true;
+        },
+        setVisibleForThirdDivider: function(){
+            this.isThirdDividerVisible = true;
         }
     }
 })

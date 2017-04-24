@@ -132,14 +132,14 @@
 
       <!-- START THE FEATURETTES -->
 
-      <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
         <feature-content 
             :visibility="isFirstFeatureVisible"
             :feature="firstTypeOfFeature"
             :header = "firstFeatureHeader"
-            :content="firstFeatureContent">
+            :content="firstFeatureContent"
+            :divider="isFirstDividerVisible">
         </feature-content>
         <!-- feature-image-component -->
         <feature-image
@@ -149,14 +149,14 @@
         </feature-image>
       </div>
 
-      <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
         <feature-content
             :visibility="isSecondFeatureVisible"
             :feature="secondTypeOfFeature"
             :header = "secondFeatureHeader"
-            :content="secondFeatureContent">
+            :content="secondFeatureContent"
+            :divider="isSecondDividerVisible">
         </feature-content>
         <!-- feature-image-component -->
         <feature-image
@@ -166,14 +166,14 @@
         </feature-image>
       </div>
 
-      <hr class="featurette-divider">
       <div class="row featurette">
         <!-- feature-content-component -->
         <feature-content
             :visibility="isThirdFeatureVisible"
             :feature="firstTypeOfFeature"
             :header = "thirdFeatureHeader"
-            :content="thirdFeatureContent">
+            :content="thirdFeatureContent"
+            :divider="isThirdDividerVisible">
         </feature-content>
         <!-- feature-image-component -->
         <feature-image
@@ -182,12 +182,10 @@
             :feature="firstTypeOfImage">
         </feature-image>
       </div>
-      <hr class="featurette-divider">
-
       <!-- /END THE FEATURES -->
 
       <!-- footer-custom-component -->
-      <my-footer />
+      <my-footer :divider="isFooterDividerVisible"/>
 
     </div><!-- /.container -->
   </div>

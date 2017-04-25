@@ -156,6 +156,7 @@ new Vue({
 // DATA:
     data() {
         return{
+    // our-portfolio contents data
             projects: {
                 firstProject:{
                     owner: 'ОАО «Мобильные Теле Системы»',
@@ -183,8 +184,8 @@ new Vue({
             secondTogglerContent: 'Предварительный энергоаудит или энергоаудит, как отдельная услуга? ' 
                          + 'Это не важно. Для Вас мы готовы провести глубокое исследование в сфере ' 
                          + 'аудита энергосетей.',
-            thirdTogglerContent: 'Работы любого уровня сложности. Сложные проектный виды работ. ' 
-                         + 'В области электромонтажа для СтройЭлектроГрупп нет ничего невозможного.',
+            thirdTogglerContent: 'Работы любого уровня сложности. Сложные комплексные проекты или сложные операции. ' 
+                         + 'В сфере электромонтажых работ для СтройЭлектроГрупп нет ничего невозможного.',
     // feature-toggler type
             firstTogglerType: 'firstFeatureToggler',
             secondTogglerType: 'secondFeatureToggler',
@@ -239,12 +240,6 @@ new Vue({
             isFeaturesBlockVisible: true,
     // data object for header
             featureHeaders: {
-                // for feature-toggler components - will be useful in future
-                featureTogglersHeaders:{
-                    firstHeader: 'Электромонтажные работы',
-                    secondHeader: 'Энергоаудит',
-                    thirdHeader: 'Специальные виды работ'
-                },
                 // for "ГЛАВНАЯ" feature-content components
                 defaultFeatureHeaders: {
                     firstDefaultHeader: 'Качество',
@@ -270,6 +265,20 @@ new Vue({
             },
     // data object for content
             featureContents:{
+                defaultTexts: {
+                    firstText: 'Ключевой критерий для нас - качество выполняемых работ. ' 
+                         + 'Проводником нашего стремления к максимальному качеству стал комплекс '
+                         + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
+                         + 'с нашими клиентами. Мы знаем как сделать КАЧЕСТВЕННО',
+                    secondText: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
+                         + 'Пройденный нами путь способствовал достижению высокого уровня зрелости бизнес-процессов '
+                         + 'как внутри компании, так и во взаимодействии с клиентами. '
+                         + 'с нашими клиентами. Мы знаем КАК делать',
+                    thirdText: 'Благодаря стремлению к новым интересным задачам, ' 
+                         + 'наша компания накопила значительный багаж самых разных проектов. '
+                         + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
+                         + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ'
+                },
                 wiringFeatureTexts:{
                     firstText: 'ООО "СтройЭлектроГрупп" оказывает полный комплекс услуг по монтажу, '
                          + 'наладке и организации электроснабжения на объектах энергетической '
@@ -287,38 +296,23 @@ new Vue({
                          + 'параметров и режимов.',
                 },
                 energoAuditFeatureTexts:{
-                    firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
-                         + 'Vestibulum id ligula porta felis euismod semper. ' 
-                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                         + 'Fusce dapibus, tellus ac cursus commodo.',
-                    secondText: 'Bonec ullamcorper nulla non metus auctor fringilla.' 
-                         + 'Vestibulum id ligula porta felis euismod semper. ' 
-                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                         + 'Fusce dapibus, tellus ac cursus commodo.'
+                    firstText: 'Энергетическое обследование или энергоаудит проводится ' 
+                         + 'и как отдельная процедура, и как составляющая проекта по ' 
+                         + 'электромонтажу. В рамках энергоаудита наши сотрудники проводят '
+                         + 'все необходимые анализы из возможных и самостоятельно оценивают результаты.',
+                    secondText: 'По результатам измерений и последующих расчётов ' 
+                         + 'исполненных во время проведения энергоаудита составляются отчёты. ' 
+                         + 'Руководствуясь результатами обследования и данными в отчёте рекомендациями '
+                         + 'можно успешно реализовывать работы по электромонтажу.'
                 },
                 specialWorksFeatureTexts:{
-                    firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
-                         + 'Vestibulum id ligula porta felis euismod semper. ' 
-                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                         + 'Fusce dapibus, tellus ac cursus commodo.',
-                    secondText: 'Bonec ullamcorper nulla non metus auctor fringilla.' 
-                         + 'Vestibulum id ligula porta felis euismod semper. ' 
-                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                         + 'Fusce dapibus, tellus ac cursus commodo.'
-                },
-                defaultTexts: {
-                    firstText: 'Ключевой критерий для нас - качество выполняемых работ. ' 
-                         + 'Проводником нашего стремления к максимальному качеству стал комплекс '
-                         + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
-                         + 'с нашими клиентами. Мы знаем как сделать КАЧЕСТВЕННО',
-                    secondText: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
-                         + 'Пройденный нами путь способствовал достижению высокого уровня зрелости бизнес-процессов '
-                         + 'как внутри компании, так и во взаимодействии с клиентами. '
-                         + 'с нашими клиентами. Мы знаем КАК делать',
-                    thirdText: 'Благодаря стремлению к новым интересным задачам, ' 
-                         + 'наша компания накопила значительный багаж самых разных проектов. '
-                         + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
-                         + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ'
+                    firstText: 'Специалисты ООО «СтройЭлектроГрупп» имеют опыт проведения '
+                         + 'специальных видов работ. Одним из примеров подобных работ является '
+                         + 'Монтаж 4-х мачт оповещения ПМЖ 22,8 на объектах инженерной защиты ' 
+                         + 'Макарьево-Желтоводского монастыря Лысковского района, Нижегородской области.',
+                    secondText: 'Другим примером работы особой сложности является ' 
+                         + 'Ремонт ввода ВЛ-35кВ. ТП35/0,4 ФКУ «Исправительная колония №6 ГУФСИН '
+                         + 'России по Нижегородской области. '
                 }
             },
     // data object for images
@@ -358,14 +352,12 @@ new Vue({
             this.setFeatureHeader('feature-two');
             this.setFeatureImage('feature-two');
             this.toggleFeatureContentBlockVisibility('feature-two');
-            this.toggleFeatureToggleBlockVisibility('close');
         },
         thirdFeatureBlock: function() {
             this.setFeatureContent('feature-three');
             this.setFeatureHeader('feature-three');
             this.setFeatureImage('feature-three');
             this.toggleFeatureContentBlockVisibility('feature-three');
-            this.toggleFeatureToggleBlockVisibility('close');
         },
         resetContentAndHeaders: function(){
             this.isProjectsVisible = false;

@@ -270,30 +270,56 @@ new Vue({
             },
     // data object for content
             featureContents:{
-                firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
+                wiringFeatureTexts:{
+                    firstText: 'ООО "СтройЭлектроГрупп" оказывает полный комплекс услуг по монтажу, '
+                         + 'наладке и организации электроснабжения на объектах энергетической '
+                         + 'отрасли, в производственных, складских, торговых, офисных зданиях и '
+                         + 'сооружениях, а также прочих объектах недвижимости.',
+                    secondText: 'Одной из услуг оказываемых ООО СтройЭлектроГрупп» является '
+                         + 'бестраншейная прокладка коммуникаций путём прокола. '
+                         + 'Для работы не требуется стационарных источников энергии и воды '
+                         + 'Бурение осуществляется за счет продавливания и последующего расширения '
+                         + 'и уплотнения грунта.'
+                         + 'Главной особенностью является то, что работа производится из котлована.',
+                    thirdText: 'Пусконаладочные работы, сопровождающие электромонтажные работы, '
+                         + 'представляют собой комплекс работ, включающий проверку, настройку '
+                         + 'и испытания электрооборудования с целью обеспечения его проектных '
+                         + 'параметров и режимов.',
+                },
+                energoAuditFeatureTexts:{
+                    firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 
                          + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
                          + 'Fusce dapibus, tellus ac cursus commodo.',
-                secondText: 'Bonec ullamcorper nulla non metus auctor fringilla.' 
+                    secondText: 'Bonec ullamcorper nulla non metus auctor fringilla.' 
+                         + 'Vestibulum id ligula porta felis euismod semper. ' 
+                         + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
+                         + 'Fusce dapibus, tellus ac cursus commodo.'
+                },
+                specialWorksFeatureTexts:{
+                    firstText: 'Donec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 
                          + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
                          + 'Fusce dapibus, tellus ac cursus commodo.',
-                thirdText: 'Lonec ullamcorper nulla non metus auctor fringilla.' 
+                    secondText: 'Bonec ullamcorper nulla non metus auctor fringilla.' 
                          + 'Vestibulum id ligula porta felis euismod semper. ' 
                          + 'Praesent commodo cursus magna, vel scelerisque nisl consectetur. '
-                         + 'Fusce dapibus, tellus ac cursus commodo.',
-                firstDefaultText: 'Ключевой критерий для нас - качество выполняемых работ. ' 
+                         + 'Fusce dapibus, tellus ac cursus commodo.'
+                },
+                defaultTexts: {
+                    firstText: 'Ключевой критерий для нас - качество выполняемых работ. ' 
                          + 'Проводником нашего стремления к максимальному качеству стал комплекс '
                          + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
                          + 'с нашими клиентами. Мы знаем как сделать КАЧЕСТВЕННО',
-                secondDefaultText: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
+                    secondText: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
                          + 'Пройденный нами путь способствовал достижению высокого уровня зрелости бизнес-процессов '
                          + 'как внутри компании, так и во взаимодействии с клиентами. '
                          + 'с нашими клиентами. Мы знаем КАК делать',
-                thirdDefaultText: 'Благодаря стремлению к новым интересным задачам, ' 
+                    thirdText: 'Благодаря стремлению к новым интересным задачам, ' 
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ'
+                }
             },
     // data object for images
                 featureImages: {
@@ -307,11 +333,11 @@ new Vue({
                         secondImage: 'assets/images/features/MockForFeauture2.png',
                         thirdImage: 'assets/images/features/MockForFeauture2.png'
                     },
-                        energoAuditFeatureImages: {
+                    energoAuditFeatureImages: {
                         firstImage: 'assets/images/features/MockForFeauture3.png',
                         secondImage: 'assets/images/features/MockForFeauture3.png'
                     },
-                        specialWorksFeatureImages: {
+                    specialWorksFeatureImages: {
                         firstImage: 'assets/images/features/MockForFeauture4.png',
                         secondImage: 'assets/images/features/MockForFeauture4.png'
                     }
@@ -357,9 +383,9 @@ new Vue({
             this.setDefaultFeaturesImages();
         },
         setDefaultFeaturesContents: function(){
-            this.firstFeatureContent = this.featureContents.firstDefaultText;
-            this.secondFeatureContent = this.featureContents.secondDefaultText;
-            this.thirdFeatureContent = this.featureContents.thirdDefaultText;
+            this.firstFeatureContent = this.featureContents.defaultTexts.firstText;
+            this.secondFeatureContent = this.featureContents.defaultTexts.secondText;
+            this.thirdFeatureContent = this.featureContents.defaultTexts.thirdText;
         },
         setDefaultFeaturesHeaders: function(){
             this.firstFeatureHeader = this.featureHeaders.defaultFeatureHeaders.firstDefaultHeader;
@@ -390,19 +416,17 @@ new Vue({
         // should change this method for real data
         setFeatureContent: function(name){
             if(name == "feature-one"){
-                this.firstFeatureContent = this.featureContents.firstText;
-                this.secondFeatureContent = this.featureContents.firstText;
-                this.thirdFeatureContent = this.featureContents.firstText;
+                this.firstFeatureContent = this.featureContents.wiringFeatureTexts.firstText;
+                this.secondFeatureContent = this.featureContents.wiringFeatureTexts.secondText;
+                this.thirdFeatureContent = this.featureContents.wiringFeatureTexts.thirdText;
             }
             if(name == "feature-two"){
-                this.firstFeatureContent = this.featureContents.secondText;
-                this.secondFeatureContent = this.featureContents.secondText;
-                this.thirdFeatureContent = this.featureContents.secondText;
+                this.firstFeatureContent = this.featureContents.energoAuditFeatureTexts.firstText;
+                this.secondFeatureContent = this.featureContents.energoAuditFeatureTexts.secondText;
             }
             if(name == "feature-three"){
-                this.firstFeatureContent = this.featureContents.thirdText;
-                this.secondFeatureContent = this.featureContents.thirdText;
-                this.thirdFeatureContent = this.featureContents.thirdText;
+                this.firstFeatureContent = this.featureContents.specialWorksFeatureTexts.firstText;
+                this.secondFeatureContent = this.featureContents.specialWorksFeatureTexts.secondText
             }
         },
         setFeatureImage: function(name){

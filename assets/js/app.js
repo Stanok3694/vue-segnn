@@ -276,9 +276,9 @@ new Vue({
             secondFeatureImage: 'assets/images/features/default/default2.jpg',
             thirdFeatureImage: 'assets/images/features/default/default3.jpg',
     // feature-toggler images urls
-            firstAvatarImage: 'assets/images/features/avatars/avatar1.jpg',
-            secondAvatarImage: 'assets/images/features/avatars/avatar2.jpg',
-            thirdAvatarImage: 'assets/images/features/avatars/avatar3.jpg',
+            firstAvatarImage: 'assets/images/avatars/avatar1.jpg',
+            secondAvatarImage: 'assets/images/avatars/avatar2.jpg',
+            thirdAvatarImage: 'assets/images/avatars/avatar3.jpg',
     // classes data
                 firstTypeOfFeature: 'col-md-7',
                 secondTypeOfFeature: 'col-md-7 col-md-push-5',

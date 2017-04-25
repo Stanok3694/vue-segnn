@@ -272,9 +272,9 @@ new Vue({
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
     // feature-images default URLs
-            firstFeatureImage: 'assets/images/features/MockForFeauture1.png',
-            secondFeatureImage: 'assets/images/features/MockForFeauture1.png',
-            thirdFeatureImage: 'assets/images/features/MockForFeauture1.png',
+            firstFeatureImage: 'assets/images/features/default/default1.jpg',
+            secondFeatureImage: 'assets/images/features/default/default2.jpg',
+            thirdFeatureImage: 'assets/images/features/default/default3.jpg',
     // feature-toggler images urls
             firstAvatarImage: 'assets/images/avatars/MockForAvatar1.png',
             secondAvatarImage: 'assets/images/avatars/MockForAvatar2.png',
@@ -384,22 +384,22 @@ new Vue({
     // data object for images
             featureImages: {
                 defaultImages: {
-                    firstImage: 'assets/images/features/MockForFeauture1.png',
-                    secondImage: 'assets/images/features/MockForFeauture1.png',
-                    thirdImage: 'assets/images/features/MockForFeauture1.png'
+                    firstImage: 'assets/images/features/default/default1.jpg',
+                    secondImage: 'assets/images/features/default/default2.jpg',
+                    thirdImage: 'assets/images/features/default/default3.jpg'
                 },
                 wiringFeatureImages: {
-                    firstImage: 'assets/images/features/MockForFeauture2.png',
-                    secondImage: 'assets/images/features/MockForFeauture2.png',
-                    thirdImage: 'assets/images/features/MockForFeauture2.png'
+                    firstImage: 'assets/images/features/wiring/wiring1.jpg',
+                    secondImage: 'assets/images/features/wiring/wiring2.jpg',
+                    thirdImage: 'assets/images/features/wiring/wiring3.jpg'
                 },
                 energoAuditFeatureImages: {
-                    firstImage: 'assets/images/features/MockForFeauture3.png',
-                    secondImage: 'assets/images/features/MockForFeauture3.png'
+                    firstImage: 'assets/images/features/audit/audit2.jpg',
+                    secondImage: 'assets/images/features/audit/audit3.jpg'
                 },
                 specialWorksFeatureImages: {
-                    firstImage: 'assets/images/features/MockForFeauture4.png',
-                    secondImage: 'assets/images/features/MockForFeauture4.png'
+                    firstImage: 'assets/images/features/special/special1.png',
+                    secondImage: 'assets/images/features/special/special2.png'
                     }
             },
     // contacts headers:

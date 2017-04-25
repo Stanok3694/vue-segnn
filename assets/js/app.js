@@ -171,7 +171,7 @@ new Vue({
                     owner: 'ОАО «Тульские городские электрические сети»',
                     name: 'Проектирование кабеля 6 кВ от ПС№218 "Южная" до РП 41 в Привокзальном районе г.Тулы',
                     data: 'КЛ 6 кВ длиной 2800м,камера КСО- 1 шт., пристрой к РП'
-                },
+                }
             },
     // feature-toggler headers data
             firstTogglerHeader: 'Электромонтажные работы',
@@ -235,7 +235,7 @@ new Vue({
             isThirdImageVisible: true,
 
             isTogglerBlockVisible: true,
-            isProjectsShow: false,
+            isProjectsVisible: false,
             isFeaturesBlockVisible: true,
     // data object for header
             featureHeaders: {
@@ -320,11 +320,6 @@ new Vue({
         },
 // METHODS:
     methods: {
-        togglePortfolioShow: function() {
-            this.isProjectsShow = true;
-            this.isTogglerBlockVisible = false;
-            this.isFeaturesBlockVisible = false;
-        },
     // trigges for setting data in feature-content components
         firstFeatureBlock: function() {
             this.setFeatureContent('feature-one');
@@ -348,8 +343,9 @@ new Vue({
             this.toggleFeatureToggleBlockVisibility('close');
         },
         resetContentAndHeaders: function(){
-            this.isProjectsShow = false;
+            this.isProjectsVisible = false;
             this.isFeaturesBlockVisible = true;
+
             this.setVisible();
             this.setDefaultData();
             this.toggleFeatureToggleBlockVisibility('open');
@@ -425,6 +421,10 @@ new Vue({
             }
         },
     // visible-unvisible triggers
+        togglePortfolioVisible: function() {
+            this.isProjectsVisible = true;
+            this.isFeaturesBlockVisible = false;
+        },
         toggleFeatureContentBlockVisibility: function(name){
             if(name == 'feature-one'){
                 this.setVisible();

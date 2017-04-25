@@ -42,7 +42,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active" ><a href="#" v-on:click="resetContentAndHeaders">Главная</a></li>
-                <li><a href="#about" @click="togglePortfolioShow">Наше портфолио</a></li>
+                <li><a href="#about" @click="togglePortfolioVisible">Наше портфолио</a></li>
                 <li><a href="#contact">Контакты</a></li>
               </ul>
             </div>
@@ -85,7 +85,7 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <div class="container marketing" v-if="isFeaturesBlockVisible">
 
       <!-- Three columns of text below the carousel -->
       <div class="row" v-if="isTogglerBlockVisible">
@@ -123,7 +123,7 @@
 
       <!-- START THE FEATURETTES -->
 
-      <div class="row featurette" v-if="isFeaturesBlockVisible">
+      <div class="row featurette">
         <!-- feature-content-component -->
         <feature-content 
             :visibility="isFirstFeatureVisible"
@@ -179,8 +179,9 @@
       <my-footer :divider="isFooterDividerVisible"/>
 
     </div><!-- /.container -->
-    <div class="wrapper" v-if="isProjectsShow">
-      <div id="card" v-for="project in projects">
+
+    <div align="center" class="wrapper" v-if="isProjectsVisible">
+      <div class="col-md-3" id="card" v-for="project in projects">
         <p>{{project.owner}}</p>
         <p>{{project.name}}</p>
         <p>{{project.data}}</p>

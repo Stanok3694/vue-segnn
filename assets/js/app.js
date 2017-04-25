@@ -124,7 +124,7 @@ Vue.component('feature-toggler',{
                 '<p>{{content}}</p>' + 
                 '<p>' + 
                     '<a class="btn btn-default"' + 
-                        'role="button"' + 
+                        'role="button" href="#feature"' + 
                         'v-on:click="changeFeatureBlock"' + 
                     '>' + 
                         'Подробнее &raquo;' + 
@@ -352,7 +352,6 @@ new Vue({
             this.setFeatureHeader('feature-one');
             this.setFeatureImage('feature-one');
             this.toggleFeatureContentBlockVisibility('feature-one');
-            this.toggleFeatureToggleBlockVisibility('close');
         },
         secondFeatureBlock: function() {
             this.setFeatureContent('feature-two');
@@ -374,7 +373,6 @@ new Vue({
 
             this.setVisible();
             this.setDefaultData();
-            this.toggleFeatureToggleBlockVisibility('open');
         },
     // setters for feature-content and feature-image components DEFAULT data
         setDefaultData: function(){
@@ -457,16 +455,6 @@ new Vue({
                 this.setInvisible();              
             }
         },
-        toggleFeatureToggleBlockVisibility: function(param){
-            if(param == "close"){
-                this.isTogglerBlockVisible = false;
-                this.setInvisibleForFirstDivider();
-            }
-            if(param == "open"){
-                this.isTogglerBlockVisible = true;
-                this.setVisibleForFirstDivider();
-            }
-        },
         setVisible: function(){
             this.setVisibleForThirdBlock();
             this.setVisibleForThirdDivider();
@@ -482,12 +470,6 @@ new Vue({
         setInvisibleForThirdBlock: function(){
             this.isThirdFeatureVisible = false;
             this.isThirdImageVisible = false; 
-        },
-        setVisibleForFirstDivider: function(){
-            this.isFirstDividerVisible = true;
-        },
-        setInvisibleForFirstDivider: function(){
-            this.isFirstDividerVisible = false;
         },
         setVisibleForThirdDivider: function(){
             this.isThirdDividerVisible = true;

@@ -151,6 +151,36 @@ Vue.component('feature-toggler',{
     }
 })
 
+// contact-type-component
+Vue.component('contact-type',{
+    props: {
+        header: {
+            type: String,
+            required: true
+        },
+        content: {
+            type: String,
+            required: true
+        },
+        feature: {
+            type: String,
+            required: true
+        },
+        source: {
+            type: String,
+            required: true
+        }        
+    },
+    template: '<div :class="feature">' + 
+                '<img class="img-circle"' + 
+                    ':src="source"' + 
+                    'alt="Generic placeholder image"' + 
+                    'width="140" height="140">' +
+                '<h2>{{header}}</h2>' + 
+                '<p>{{content}}</p>' + 
+              '</div>',
+})
+
 new Vue({
     el: "#app",
 // DATA:
@@ -230,6 +260,7 @@ new Vue({
             isSecondDividerVisible: true,
             isThirdDividerVisible: true,
             isFooterDividerVisible: true,
+            isContactDividerVisible: false,
             
             isFirstImageVisible: true,
             isSecondImageVisible: true,
@@ -237,6 +268,7 @@ new Vue({
 
             isTogglerBlockVisible: true,
             isProjectsVisible: false,
+            isContactsVisible: false,
             isFeaturesBlockVisible: true,
     // data object for header
             featureHeaders: {
@@ -316,28 +348,41 @@ new Vue({
                 }
             },
     // data object for images
-                featureImages: {
-                    defaultImages: {
-                        firstImage: 'assets/images/features/MockForFeauture1.png',
-                        secondImage: 'assets/images/features/MockForFeauture1.png',
-                        thirdImage: 'assets/images/features/MockForFeauture1.png'
-                    },
-                    wiringFeatureImages: {
-                        firstImage: 'assets/images/features/MockForFeauture2.png',
-                        secondImage: 'assets/images/features/MockForFeauture2.png',
-                        thirdImage: 'assets/images/features/MockForFeauture2.png'
-                    },
-                    energoAuditFeatureImages: {
-                        firstImage: 'assets/images/features/MockForFeauture3.png',
-                        secondImage: 'assets/images/features/MockForFeauture3.png'
-                    },
-                    specialWorksFeatureImages: {
-                        firstImage: 'assets/images/features/MockForFeauture4.png',
-                        secondImage: 'assets/images/features/MockForFeauture4.png'
+            featureImages: {
+                defaultImages: {
+                    firstImage: 'assets/images/features/MockForFeauture1.png',
+                    secondImage: 'assets/images/features/MockForFeauture1.png',
+                    thirdImage: 'assets/images/features/MockForFeauture1.png'
+                },
+                wiringFeatureImages: {
+                    firstImage: 'assets/images/features/MockForFeauture2.png',
+                    secondImage: 'assets/images/features/MockForFeauture2.png',
+                    thirdImage: 'assets/images/features/MockForFeauture2.png'
+                },
+                energoAuditFeatureImages: {
+                    firstImage: 'assets/images/features/MockForFeauture3.png',
+                    secondImage: 'assets/images/features/MockForFeauture3.png'
+                },
+                specialWorksFeatureImages: {
+                    firstImage: 'assets/images/features/MockForFeauture4.png',
+                    secondImage: 'assets/images/features/MockForFeauture4.png'
                     }
-                }
-            }    
-        },
+            },
+    // contacts headers:
+            firstContactHeader: 'Мы ждём Ваших звонков',
+            secondContactHeader: 'Мы ждём Ваших писем',
+            thirdContactHeader: 'Мы ждём Вас',
+    // contacts contents:
+            firstContactContent: 'Наш сотовый: 8-800-555-35-35',
+            secondContactContent: 'Наш e-mail: prokol@pro.col',
+            thirdContactContent: 'Наш адрес: г.Нижний Новгород, ул. Лескова, д.37',
+    // contacts images:
+            firstContactImage: 'assets/images/contacts/phone.jpg',
+            secondContactImage: 'assets/images/contacts/email.png',
+            thirdContactImage: 'assets/images/contacts/road.jpg'
+        }
+    },
+       
 // METHODS:
     methods: {
     // trigges for setting data in feature-content components
@@ -361,6 +406,7 @@ new Vue({
         },
         resetContentAndHeaders: function(){
             this.isProjectsVisible = false;
+            this.isContactsVisible = false;
             this.isFeaturesBlockVisible = true;
 
             this.setVisible();
@@ -435,8 +481,16 @@ new Vue({
             }
         },
     // visible-unvisible triggers
+        toggleContactsVisible: function(){
+            this.isContactsVisible = true;
+            this.isProjectsVisible = false;
+            this.isFeaturesBlockVisible = false;
+
+            this.setFeatureContent('contacts');
+        },
         togglePortfolioVisible: function() {
             this.isProjectsVisible = true;
+            this.isContactsVisible = false;
             this.isFeaturesBlockVisible = false;
         },
         toggleFeatureContentBlockVisibility: function(name){

@@ -41,9 +41,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active" ><a href="#" v-on:click="resetContentAndHeaders">Главная</a></li>
-                <li><a href="#about" @click="togglePortfolioVisible">Наше портфолио</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li class="active" ><a href="#" @click="resetContentAndHeaders">Главная</a></li>
+                <li><a href="#portfolio" @click="togglePortfolioVisible">Наше портфолио</a></li>
+                <li><a href="#contacts" @click="toggleContactsVisible">Контакты</a></li>
               </ul>
             </div>
           </div>
@@ -84,11 +84,9 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing" v-if="isFeaturesBlockVisible">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row" v-if="isTogglerBlockVisible">
+      <!-- features-togglers-->
+      <div class="row">
         <!--first toggler-->
         <feature-toggler
           :toggler="firstTogglerType"
@@ -120,9 +118,7 @@
         <!--end of first toggler-->
 
       </div><!-- /.row -->
-
-      <!-- START THE FEATURETTES -->
-
+      <!--features-->
       <div class="row featurette" id="feature">
         <!-- feature-content-component -->
         <feature-content 
@@ -173,20 +169,50 @@
             :feature="firstTypeOfImage">
         </feature-image>
       </div>
-      <!-- /END THE FEATURES -->
-
-      <!-- footer-custom-component -->
-      <my-footer :divider="isFooterDividerVisible"/>
-
-    </div><!-- /.container -->
-
-    <div align="center" class="wrapper" v-if="isProjectsVisible">
+    </div>
+  
+    <div id="portfolio" class="wrapper" v-if="isProjectsVisible">
       <div class="col-md-3" id="card" v-for="project in projects">
         <p>{{project.owner}}</p>
         <p>{{project.name}}</p>
         <p>{{project.data}}</p>
       </div>
     </div>
+
+    <div id="contacts" class="wrapper" v-if="isContactsVisible">
+      <div class="row">
+        <!--first toggler-->
+        <contact-type
+          :feature="featureToggleType"
+          :header="firstContactHeader"
+          :content="firstContactContent"
+          :source="firstContactImage">
+        </contact-type>  
+        <!--end of first toggler-->
+
+        <!--first toggler-->
+        <contact-type
+          :feature="featureToggleType"
+          :header="secondContactHeader"
+          :content="secondContactContent"
+          :source="secondContactImage">
+        </contact-type>  
+        <!--end of first toggler-->
+
+        <!--first toggler-->
+        <contact-type
+          :feature="featureToggleType"
+          :header="thirdContactHeader"
+          :content="thirdContactContent"
+          :source="thirdContactImage">
+        </contact-type>  
+        <!--end of first toggler-->
+
+      </div><!-- /.row -->
+  </div>
+
+  <!-- footer-custom-component -->
+      <my-footer :divider="isFooterDividerVisible"/>
   </div>
 
     <!-- Bootstrap + custom core JavaScript

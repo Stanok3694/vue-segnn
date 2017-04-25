@@ -411,9 +411,9 @@ new Vue({
             secondContactContent: 'Наш e-mail: prokol@pro.col',
             thirdContactContent: 'Наш адрес: г.Нижний Новгород, ул. Лескова, д.37',
     // contacts images:
-            firstContactImage: 'assets/images/contacts/phone.jpg',
+            firstContactImage: 'assets/images/contacts/phone.png',
             secondContactImage: 'assets/images/contacts/email.png',
-            thirdContactImage: 'assets/images/contacts/road.jpg'
+            thirdContactImage: 'assets/images/contacts/road.png'
         }
     },
        

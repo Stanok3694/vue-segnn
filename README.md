@@ -7,6 +7,14 @@ Also I would like to deploy this into cloud's env and use docker for this or tri
 This is my first freelance project on vue.js.
 ***
 
+25.04.17 -> first sprint is over:
+  - release first production version of this vue-app;
+  - this app has all basic logic, which Customer wanted;
+  - create list of issue, which I should fix;
+  - write list of features, which I can implement into this project.
+Next step is creating plan for the next sprint, which will start on April, 28-29.
+***
+
 22.04.17 -> app is growning:
   - use components in single file (app.js), templates are inline javascript string; 
   - now think about gulp for more flexible developing; 
@@ -22,4 +30,6 @@ Great experience with vue.js, js, css/bootstrap ans other related tech when I ha
 Today I will try to use x-template way for templates and create some local/global components.
 ***
 
-
+Start works: 12.04.17
+End First Sprint: 25.04.17
+***

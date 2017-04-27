@@ -6,6 +6,15 @@ Also I would like to deploy this into cloud's env and use docker for this or tri
 ***
 This is my first freelance project on vue.js.
 ***
+History:
+***
+
+First sprint statistic:
+  - Start works: 11.04.17
+  - First sprint start: 17.04.17
+  - End First Sprint: 25.04.17
+  - Sprint duration: 8 days
+***
 
 25.04.17 -> first sprint is over:
   - release first production version of this vue-app;
@@ -28,11 +37,4 @@ Great experience with vue.js, js, css/bootstrap ans other related tech when I ha
   - use single-file way and defint components global or local with string-mode templates (hard way);
   - use x-template scripts for define html-templates and use these templates in local or global components;
 Today I will try to use x-template way for templates and create some local/global components.
-***
-
-Statistic:
-  - Start works: 11.04.17
-  - First sprint start: 17.04.17
-  - End First Sprint: 25.04.17
-  - Sprint duration: 8 days
 ***

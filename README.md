@@ -30,6 +30,9 @@ Great experience with vue.js, js, css/bootstrap ans other related tech when I ha
 Today I will try to use x-template way for templates and create some local/global components.
 ***
 
-Start works: 12.04.17
-End First Sprint: 25.04.17
+Statistic:
+  - Start works: 11.04.17
+  - First sprint start: 17.04.17
+  - End First Sprint: 25.04.17
+  - Sprint duration: 8 days
 ***

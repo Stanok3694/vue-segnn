@@ -284,7 +284,7 @@ new Vue({
                 secondTypeOfFeature: 'col-md-7 col-md-push-5',
                 firstTypeOfImage: 'col-md-5',
                 secondTypeOfImage: 'col-md-5 col-md-pull-7',
-                featureToggleType: 'col-lg-4', 
+                featureToggleType: 'col-lg-4 col-md-4 feature-toggler', 
     // flags
             isFirstFeatureVisible: true,
             isSecondFeatureVisible: true,

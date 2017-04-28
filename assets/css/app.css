@@ -58,3 +58,7 @@
   background: url(../images/slides/slider3.jpg) no-repeat;
   background-size: cover;
 }
+
+.feature-toggler{
+  text-align: center;
+}

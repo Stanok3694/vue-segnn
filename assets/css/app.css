@@ -43,3 +43,18 @@
   transform: translateX(10px);
   opacity: 0;
 }
+
+#slide1{
+  background: url(../images/slides/slider1.jpg) no-repeat;
+  background-size: cover;
+}
+
+#slide2{
+  background: url(../images/slides/slider2.jpg) no-repeat;
+  background-size: cover;
+}
+
+#slide3{
+  background: url(../images/slides/slider3.jpg) no-repeat;
+  background-size: cover;
+}
